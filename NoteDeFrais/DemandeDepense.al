@@ -32,17 +32,14 @@ page 50112 DemandeDepense
                 field(TTCDevise; Rec."TTC (devise)")
                 {
                     ToolTip = 'Specifies the value of the TTC (devise) field.';
-                    Caption = 'TTC (EUR)';
+                    Caption = 'Montant';
 
                 }
                 field(TVA; Rec.TVA)
                 {
                     ToolTip = 'Specifies the value of the TVA field.';
                 }
-                field(Refacturable; Rec.Refacturable)
-                {
-                    ToolTip = 'Specifies the value of the Refacturable field.';
-                }
+
                 field(DateDepense; Rec.DateDepense)
                 {
                     ToolTip = 'Specifies the value of the DateDepense field.';
@@ -56,11 +53,14 @@ page 50112 DemandeDepense
                 field(Devise; Rec.Devise)
                 {
                     ToolTip = 'Specifies the value of the Devise field.';
-                }
-                field(TotalRemboursableDevise; Rec."Total Remboursable(devise)")
-                {
-                    ToolTip = 'Specifies the value of the Total Remboursable (devise) field.';
-                    Caption = 'Total Remboursable(EUR)';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        currencies: Record "Currency";
+                    begin
+                        currencies.Reset();
+                        if Page.RunModal(Page::"Currencies", currencies) = Action::LookupOK then
+                            Rec.Devise := currencies."code";
+                    end;
                 }
                 field(Description; Rec.Description)
                 {
