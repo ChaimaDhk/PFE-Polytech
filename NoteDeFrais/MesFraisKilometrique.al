@@ -38,9 +38,10 @@ page 50134 MesFraisKilometrique
                 {
                     ToolTip = 'Specifies the value of the Distance totale parcourue (KM) field.';
                 }
-                field("Type  de véhicule"; Rec."Type  de véhicule")
+                field("Type  de véhicule"; Rec."Type")
                 {
                     ToolTip = 'Specifies the value of the Type de véhicule field.';
+                    Caption = 'Type  de véhicule';
                 }
                 field(Commentaire; Rec.Commentaire)
                 {

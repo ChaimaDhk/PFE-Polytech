@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit Approval Mgmt. Ext (ID 50106).
+/// Codeunit Approval Mgmt. Ext (ID 50112).
 /// </summary>
 codeunit 50112 "Approval Congé Mgmt. Ext1"
 {
@@ -65,7 +65,7 @@ codeunit 50112 "Approval Congé Mgmt. Ext1"
     /// <returns>Return value of type Boolean.</returns>
     procedure IsRequestApprovalsWorkflowEnable(var Request: Record "Conges"): Boolean
     begin
-        IF Request."Approval Status" <> Request."Approval Status"::Open then
+        IF Request."Approval Status" <> Request."Approval Status"::Ouvert then
             exit(false);
         exit(WorkflowManagement.CanExecuteWorkflow(Request, WorkflowEventHandlingCust.RunWorkflowOnSendRequestForApprovalCode));
     end;

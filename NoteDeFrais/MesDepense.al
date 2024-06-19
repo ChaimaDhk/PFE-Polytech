@@ -24,15 +24,18 @@ page 50119 MesDepense
                 field(TypeDepense; Rec.TypeDepense)
                 {
                     ToolTip = 'Specifies the value of the TypeDepense field.';
+                    Caption = 'Type de dépense';
                 }
                 field(DateDepense; Rec.DateDepense)
                 {
                     ToolTip = 'Specifies the value of the DateDepense field.';
+                    Caption = 'Date de dépense';
                     Editable = false;
                 }
                 field("TTC (devise)"; Rec."TTC (devise)")
                 {
                     ToolTip = 'Specifies the value of the TTC (devise) field.';
+                    Caption = 'Montant';
                 }
                 field(Commentaire; Rec.Commentaire)
                 {
@@ -40,5 +43,8 @@ page 50119 MesDepense
                 }
             }
         }
+
+
+
     }
 }

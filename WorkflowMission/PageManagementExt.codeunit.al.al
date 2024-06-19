@@ -1,7 +1,7 @@
 /// <summary>
 /// Codeunit Page Management Ext (ID 50107).
 /// </summary>
-codeunit 50107 "Page Mission Management Ext"
+codeunit 50107 "Page Mission Management Ext2"
 {
     trigger OnRun()
     var
@@ -23,7 +23,7 @@ codeunit 50107 "Page Mission Management Ext"
     begin
         case RecordRef.Number of
             Database::Mission:
-                exit(Page::OrdreaValider);
+                exit(Page::MesOrdres);
         end;
 
 

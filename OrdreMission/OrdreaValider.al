@@ -4,14 +4,14 @@
 page 50149 OrdreaValider
 {
     ApplicationArea = All;
-    Caption = 'OrdreaValider';
+    Caption = 'Ordre a Valider';
     PageType = List;
     SourceTable = Mission;
     UsageCategory = Administration;
     SourceTableView = where(Statut = const(Transmise));
     DeleteAllowed = false;
     InsertAllowed = false;
-    ModifyAllowed = false;
+
 
     layout
     {
@@ -26,14 +26,19 @@ page 50149 OrdreaValider
                 field(DateDebut; Rec.DateDebut)
                 {
                     ToolTip = 'Specifies the value of the DateDebut field.';
+                    Caption = 'Date de début';
+                    Editable = false;
                 }
                 field(DateFin; Rec.DateFin)
                 {
                     ToolTip = 'Specifies the value of the DateFin field.';
+                    Caption = 'Date de fin';
+                    Editable = false;
                 }
                 field("Employé"; Rec."Employé")
                 {
                     ToolTip = 'Specifies the value of the Employé field.';
+
                 }
                 field(Description; Rec.Description)
                 {
@@ -46,4 +51,8 @@ page 50149 OrdreaValider
             }
         }
     }
+
+
 }
+
+

@@ -98,10 +98,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!DateDebut.Value, "DataSet_Result")</Value>
+                    <Value>=Last(Fields!DateDebut.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontWeight>Bold</FontWeight>
+                      <Format>d</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -131,7 +132,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Titre.Value, "DataSet_Result")</Value>
+                    <Value>=Last(Fields!Titre.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontWeight>Bold</FontWeight>
@@ -164,10 +165,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!DateFin.Value, "DataSet_Result")</Value>
+                    <Value>=Last(Fields!DateFin.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontWeight>Bold</FontWeight>
+                      <Format>d</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -197,7 +199,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Description.Value, "DataSet_Result")</Value>
+                    <Value>=Last(Fields!Description.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontWeight>Bold</FontWeight>
@@ -424,7 +426,7 @@
       <Width>7.44in</Width>
       <Page>
         <PageHeader>
-          <Height>1in</Height>
+          <Height>1.46667in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -477,6 +479,7 @@
                         <FontStyle>Italic</FontStyle>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
+                        <Format>d</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>

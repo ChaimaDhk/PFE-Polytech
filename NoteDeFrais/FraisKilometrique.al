@@ -10,7 +10,7 @@ table 50116 FraisKilometrique
     {
         field(1; IdFrais; Integer)
         {
-            Caption = 'IdDepense';
+            Caption = 'Id Depense';
             AutoIncrement = true;
         }
         field(2; "Titre"; Text[100])
@@ -30,7 +30,7 @@ table 50116 FraisKilometrique
         }
         field(5; "Type  de véhicule"; Option)
         {
-            Caption = 'Type de véhicule';
+            Caption = 'Type';
             OptionMembers = "Personnel","Professionnel";
 
         }
@@ -65,6 +65,16 @@ table 50116 FraisKilometrique
         field(12; "Commentaire"; Text[1000])
         {
             Caption = 'Commentaire';
+
+        }
+        field(13; "Type"; Text[100])
+        {
+            Caption = 'Type  de véhicule';
+
+        }
+        field(14; "TTC1"; Decimal)
+        {
+            Caption = 'TTC1';
 
         }
     }

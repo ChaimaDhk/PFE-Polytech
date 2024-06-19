@@ -8,7 +8,7 @@ page 50136 "TitreCongé"
     PageType = List;
     SourceTable = Conges;
     UsageCategory = Administration;
-    SourceTableView = where(Statut = const("Validée"));
+    SourceTableView = where("Approval Status" = const("Validée"));
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;
@@ -26,16 +26,19 @@ page 50136 "TitreCongé"
                 field(DatedeDebut; Rec.DatedeDebut)
                 {
                     ToolTip = 'Specifies the value of the DateDebut field.';
+                    Caption = 'Date de Début';
                 }
                 field(DatedeReprise; Rec.DatedeReprise)
                 {
                     ToolTip = 'Specifies the value of the dateReprise field.';
+                    Caption = 'Date de reprise';
                 }
                 field("Nombre de Jours"; Rec."Nombre de Jours")
                 {
                     ToolTip = 'Specifies the value of the NombreJours field.';
+                    Caption = 'Nombre de Jours';
                 }
-                field(Statut; Rec.Statut)
+                field(Statut; Rec."Approval Status")
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
                 }

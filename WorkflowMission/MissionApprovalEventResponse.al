@@ -1,7 +1,7 @@
 /// <summary>
 /// Codeunit Workflow Response Handling Ext (ID 50105).
 /// </summary>
-codeunit 50105 WorkflowRespHandlingExt
+codeunit 50105 WorkflowRespHandlingExt2
 {
 
     trigger OnRun()
@@ -19,7 +19,7 @@ codeunit 50105 WorkflowRespHandlingExt
             DataBase::Mission:
                 begin
                     RecRef.SetTable(Request);
-                    Request.Statut := Request.Statut::Transmise;
+                    Request.Statut := Request.Statut::Ouvert;
                     Request.Modify;
                     Handled := true;
                 end;
@@ -38,7 +38,7 @@ codeunit 50105 WorkflowRespHandlingExt
             DataBase::Mission:
                 begin
                     RecRef.SetTable(Request);
-                    Request.Statut := Request.Statut::"Validée";
+                    Request.Statut := Request.Statut::"Transmise";
                     Request.Modify;
                     Handled := true;
                 end;
@@ -55,7 +55,7 @@ codeunit 50105 WorkflowRespHandlingExt
             DataBase::Mission:
                 begin
                     RecRef.SetTable(Request);
-                    Request.Statut := Request.Statut::"Validée";
+                    Request.Statut := Request.Statut::"Transmise";
                     Request.Modify;
                     IsHandled := true;
                 end;

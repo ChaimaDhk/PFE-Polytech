@@ -21,10 +21,12 @@ page 50114 DemandeNotesFrais
                 field(DateDebut; Rec.DateDebut)
                 {
                     ToolTip = 'Specifies the value of the DateDebut field.';
+                    Caption = 'Date de début';
                 }
                 field(DateFin; Rec.DateFin)
                 {
                     ToolTip = 'Specifies the value of the DateFin field.';
+                    Caption = 'Date de Fin';
                 }
                 field(Titre; Rec.Titre)
                 {

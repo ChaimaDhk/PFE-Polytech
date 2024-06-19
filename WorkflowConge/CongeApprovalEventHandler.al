@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit Workflow Event Handling Ext (ID 50104).
+/// Codeunit Workflow Event Handling Ext (ID 50110).
 /// </summary>
 codeunit 50110 "Workflow Event Handling Ext1"
 {

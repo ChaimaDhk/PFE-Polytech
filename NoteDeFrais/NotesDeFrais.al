@@ -10,16 +10,16 @@ table 50112 NotesDeFrais
     {
         field(1; IdNote; Integer)
         {
-            Caption = 'IdNote';
+            Caption = 'Id de Note';
             AutoIncrement = true;
         }
         field(2; DateDebut; Date)
         {
-            Caption = 'DateDebut';
+            Caption = 'Date deDebut';
         }
         field(3; DateFin; Date)
         {
-            Caption = 'DateFin';
+            Caption = 'Date de Fin';
         }
         field(5; Titre; Text[100])
         {
@@ -32,9 +32,15 @@ table 50112 NotesDeFrais
         field(7; "Statut"; Option)
         {
             Caption = 'Statut';
-            OptionMembers = "Transmise","Validée","Annulée";
+            OptionMembers = "Ouvert","Transmise","Validée";
+            OptionCaption = 'Ouvert,Transmise,Validée';
 
 
+
+        }
+        field(18; "Doc No."; code[20])
+        {
+            Caption = 'Doc No.';
 
         }
     }

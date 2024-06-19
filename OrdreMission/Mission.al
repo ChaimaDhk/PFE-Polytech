@@ -11,21 +11,22 @@ table 50146 Mission
     {
         field(1; IdOrdre; Integer)
         {
-            Caption = 'IdOrdre';
+            Caption = 'Id Ordre';
             AutoIncrement = true;
         }
         field(2; "Type"; Option)
         {
             Caption = 'Type';
-            OptionMembers = "Mission à létranger","Mission local";
+            OptionMembers = "Mission à l'étranger","Mission local";
+
         }
         field(3; DateDebut; Date)
         {
-            Caption = 'DateDebut';
+            Caption = 'Date de Debut';
         }
         field(4; DateFin; Date)
         {
-            Caption = 'DateFin';
+            Caption = 'Date de Fin';
         }
         field(5; Titre; Text[100])
         {
@@ -38,12 +39,23 @@ table 50146 Mission
         field(7; "Statut"; Option)
         {
             Caption = 'Statut';
-            OptionMembers = "Brouillon","Transmise";
+            OptionMembers = "Ouvert","Transmise","Validée";
         }
         field(8; "Employé"; Text[100])
         {
             Caption = 'Employé';
         }
+        field(9; "Pays"; Text[100])
+        {
+            Caption = 'Pays';
+        }
+
+        field(10; "Doc No."; code[20])
+        {
+            Caption = 'Doc No.';
+
+        }
+
     }
     keys
     {
@@ -56,5 +68,6 @@ table 50146 Mission
     begin
         rec."Employé" := USERID;
     end;
+
 }
 

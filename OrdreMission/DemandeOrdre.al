@@ -20,13 +20,33 @@ page 50144 DemandeOrdre
                 field("Type"; Rec."Type")
                 {
                     ToolTip = 'Specifies the value of the Type field.';
+                    trigger OnValidate()
+                    begin
+                        UpdatePaysVisibility();
+                        CurrPage.Update();
+                    end;
+                }
+                field(Pays; Rec.Pays)
+                {
+                    ToolTip = 'Specifies the value of the Pays field.';
+                    Editable = ShowPaysField;
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        countrie: Record "Country/Region";
+                    begin
+                        countrie.Reset();
+                        if Page.RunModal(Page::"Countries/Regions", countrie) = Action::LookupOK then
+                            Rec.Pays := countrie."Name";
+                    end;
                 }
                 field(DateDebut; Rec.DateDebut)
                 {
+                    Caption = 'Date de début';
                     ToolTip = 'Specifies the value of the DateDebut field.';
                 }
                 field(DateFin; Rec.DateFin)
                 {
+                    Caption = 'Date de fin';
                     ToolTip = 'Specifies the value of the DateFin field.';
                 }
                 field(Titre; Rec.Titre)
@@ -37,38 +57,24 @@ page 50144 DemandeOrdre
                 {
                     ToolTip = 'Specifies the value of the Description field.';
                 }
+
+                // New field for Pays
+
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action(Soumettre)
-            {
-                ApplicationArea = All;
-                Caption = 'Soumettre';
 
-                trigger OnAction()
-                var
-                    StatutRec: Record "Mission";
-                begin
+    // Adding a variable to control the visibility of the Pays field
+    var
+        ShowPaysField: Boolean;
 
-                    IF Rec."Statut" = StatutRec.Statut::Transmise THEN BEGIN
-                        MESSAGE('Cette demande a déjà été transmise.');
-                    END
-                    ELSE BEGIN
+    trigger OnOpenPage();
+    begin
+        UpdatePaysVisibility();
+    end;
 
-                        Rec."Statut" := Rec."Statut"::Transmise;
-                        Rec.MODIFY;
-
-                        MESSAGE('Demande transmise avec succès à l''approbateur.');
-                    END;
-                end;
-                //email !!!!!!!!!!
-            }
-
-        }
-
-    }
+    local procedure UpdatePaysVisibility()
+    begin
+        ShowPaysField := (Rec."Type" = Rec."Type"::"Mission à l'étranger");
+    end;
 }

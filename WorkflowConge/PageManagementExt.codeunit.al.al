@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit Page Management Ext (ID 50107).
+/// Codeunit Page Management Ext (ID 50113).
 /// </summary>
 codeunit 50113 "Page Congé Management Ext1"
 {
@@ -23,7 +23,7 @@ codeunit 50113 "Page Congé Management Ext1"
     begin
         case RecordRef.Number of
             Database::Conges:
-                exit(Page::DemandeaValider);
+                exit(Page::"MesDemandesCongé");
         end;
 
 

@@ -1,7 +1,7 @@
 /// <summary>
 /// Codeunit Workflow Event Handling Ext (ID 50104).
 /// </summary>
-codeunit 50104 "Workflow Event Handling Ext"
+codeunit 50104 "Workflow Event Handling Ext2"
 {
     /// <summary>
     /// RunWorkflowOnSendRequestForApprovalCode1.
@@ -16,7 +16,7 @@ codeunit 50104 "Workflow Event Handling Ext"
     /// RunWorkflowOnSendRequestForApproval.
     /// </summary>
     /// <param name="Request">VAR Record "Mission".</param>
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approval Mission Mgmt. Ext", 'OnSendRequestForApproval1', '', true, true)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approval Mission Mgmt. Ext2", 'OnSendRequestForApproval1', '', true, true)]
     local procedure RunWorkflowOnSendRequestForApproval1(var Request: Record Mission)
     begin
         WorkflowManagement.HandleEvent(RunWorkflowOnSendRequestForApprovalCode1, Request);
@@ -36,7 +36,7 @@ codeunit 50104 "Workflow Event Handling Ext"
     /// RunWorkflowOnCancelRequestApproval.
     /// </summary>
     /// <param name="Request">VAR Record Request.</param>
-    [EventSubscriber(ObjectType::Codeunit, CodeUnit::"Approval Mission Mgmt. Ext", 'OnCancelRequestForApproval1', '', true, true)]
+    [EventSubscriber(ObjectType::Codeunit, CodeUnit::"Approval Mission Mgmt. Ext2", 'OnCancelRequestForApproval1', '', true, true)]
     local procedure RunWorkflowOnCancelRequestApproval1(var Request: Record "Mission")
     begin
         WorkflowManagement.HandleEvent(RunWorkflowOnCancelRequestApprovalCode1, Request);

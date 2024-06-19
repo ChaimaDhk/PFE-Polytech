@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit Workflow Setup Ext (ID 50101).
+/// Codeunit Workflow Setup Ext (ID 50114).
 /// </summary>
 codeunit 50114 "Workflow Congé Setup Ext1"
 {
@@ -58,9 +58,9 @@ codeunit 50114 "Workflow Congé Setup Ext1"
 
         WorkflowSetup.InsertDocApprovalWorkflowSteps(
             Workflow,
-            BuildRequestTypeConditions(Request."Approval Status"::Open),
+            BuildRequestTypeConditions(Request."Approval Status"::Ouvert),
             workflowEventHandlingCust.RunWorkflowOnSendRequestForApprovalCode,
-            BuildRequestTypeConditions(Request."Approval Status"::"Pending Approval"),
+            BuildRequestTypeConditions(Request."Approval Status"::"Transmise"),
             workflowEventHandlingCust.RunWorkflowOnCancelRequestApprovalCode,
             workflowStepArgument,
             true

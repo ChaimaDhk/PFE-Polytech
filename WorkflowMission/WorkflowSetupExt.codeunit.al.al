@@ -1,7 +1,7 @@
 /// <summary>
 /// Codeunit Workflow Setup Ext (ID 50101).
 /// </summary>
-codeunit 50101 "Workflow Mission Setup Ext"
+codeunit 50101 "Workflow Mission Setup Ext2"
 {
     trigger OnRun()
     begin
@@ -58,9 +58,9 @@ codeunit 50101 "Workflow Mission Setup Ext"
 
         WorkflowSetup.InsertDocApprovalWorkflowSteps(
             Workflow,
-            BuildRequestTypeConditions(Request.Statut::Transmise),
+            BuildRequestTypeConditions(Request.Statut::Ouvert),
             workflowEventHandlingCust.RunWorkflowOnSendRequestForApprovalCode1,
-            BuildRequestTypeConditions(Request.Statut::"Validée"),
+            BuildRequestTypeConditions(Request.Statut::"Transmise"),
             workflowEventHandlingCust.RunWorkflowOnCancelRequestApprovalCode1,
             workflowStepArgument,
             true

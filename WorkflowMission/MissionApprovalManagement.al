@@ -1,7 +1,7 @@
 /// <summary>
 /// Codeunit Approval Mgmt. Ext (ID 50106).
 /// </summary>
-codeunit 50106 "Approval Mission Mgmt. Ext"
+codeunit 50106 "Approval Mission Mgmt. Ext2"
 {
     trigger OnRun()
     begin
@@ -65,7 +65,7 @@ codeunit 50106 "Approval Mission Mgmt. Ext"
     /// <returns>Return value of type Boolean.</returns>
     procedure IsRequestApprovalsWorkflowEnable(var Request: Record "Mission"): Boolean
     begin
-        IF Request.Statut <> Request.Statut::Transmise then
+        IF Request.Statut <> Request.Statut::Ouvert then
             exit(false);
         exit(WorkflowManagement.CanExecuteWorkflow(Request, WorkflowEventHandlingCust.RunWorkflowOnSendRequestForApprovalCode1));
     end;

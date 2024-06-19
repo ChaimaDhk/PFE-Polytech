@@ -4,7 +4,7 @@
 page 50112 DemandeDepense
 {
     ApplicationArea = All;
-    Caption = 'Demande De pense';
+    Caption = 'Demande Dépense';
     PageType = Card;
     SourceTable = Depense;
 
@@ -23,14 +23,17 @@ page 50112 DemandeDepense
                 field(TypeDepense; Rec.TypeDepense)
                 {
                     ToolTip = 'Specifies the value of the TypeDepense field.';
+                    Caption = 'Type de dépense';
                 }
                 field(Pays; Rec.Pays)
                 {
                     ToolTip = 'Specifies the value of the Pays field.';
                 }
-                field("TTC (devise)"; Rec."TTC (devise)")
+                field(TTCDevise; Rec."TTC (devise)")
                 {
                     ToolTip = 'Specifies the value of the TTC (devise) field.';
+                    Caption = 'TTC (EUR)';
+
                 }
                 field(TVA; Rec.TVA)
                 {
@@ -43,34 +46,48 @@ page 50112 DemandeDepense
                 field(DateDepense; Rec.DateDepense)
                 {
                     ToolTip = 'Specifies the value of the DateDepense field.';
+                    Caption = 'Date de Dépense';
                 }
-                field("Moyens de paiement"; Rec."Moyens de paiement")
+                field(MoyensDePaiement; Rec."Moyens de paiement")
                 {
                     ToolTip = 'Specifies the value of the Moyens de paiement field.';
+                    Caption = 'Moyens de paiement';
                 }
                 field(Devise; Rec.Devise)
                 {
                     ToolTip = 'Specifies the value of the Devise field.';
                 }
-                field("Total Remboursable(devise)"; Rec."Total Remboursable(devise)")
+                field(TotalRemboursableDevise; Rec."Total Remboursable(devise)")
                 {
-                    ToolTip = 'Specifies the value of the Total Remboursable(devise) field.';
-
+                    ToolTip = 'Specifies the value of the Total Remboursable (devise) field.';
+                    Caption = 'Total Remboursable(EUR)';
                 }
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.';
-                }
-
-                field("Documents attachés"; Rec."Documents attachés")
-                {
-                    ToolTip = 'Specifies the value of the Documents attachés field.';
                 }
                 field(Commentaire; Rec.Commentaire)
                 {
                     ToolTip = 'Specifies the value of the Commentaire field.';
                 }
             }
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = const(Database::Item),
+                              "No." = field("Doc No.");
+            }
+            systempart(Control1900383207; Links)
+            {
+                ApplicationArea = RecordLinks;
+            }
+            systempart(Control1905767507; Notes)
+            {
+                ApplicationArea = Notes;
+            }
         }
+
     }
+
 }

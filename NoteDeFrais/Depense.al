@@ -7,7 +7,7 @@ table 50115 Depense
     {
         field(1; IdDepense; Integer)
         {
-            Caption = 'IdDepense';
+            Caption = 'Id Dépense';
             AutoIncrement = true;
         }
         field(2; "Titre"; Text[100])
@@ -18,17 +18,17 @@ table 50115 Depense
 
         field(3; DateDepense; Date)
         {
-            Caption = 'DateDepense';
+            Caption = 'Date de Dépense';
         }
         field(4; "TypeDepense"; Option)
         {
-            Caption = 'TypeDepense';
+            Caption = 'Type de Dépense';
             OptionMembers = "";
         }
         field(5; "Moyens de paiement"; Option)
         {
             Caption = 'Moyens de paiement';
-            OptionMembers = "";
+            OptionMembers = "Espéce","Carte boncaire";
         }
         field(6; Pays; Text[100])
         {
@@ -40,8 +40,9 @@ table 50115 Depense
         }
         field(8; "TTC (devise)"; Text[100])
         {
-            Caption = 'TTC (devise)';
+            Caption = 'TTC (EUR)';
         }
+
         field(9; "TVA"; Text[100])
         {
             Caption = 'TVA';
@@ -52,7 +53,7 @@ table 50115 Depense
         }
         field(11; "Total Remboursable(devise)"; Text[100])
         {
-            Caption = 'Total Remboursable(devise)';
+            Caption = 'Total Remboursable(EUR)';
 
         }
         field(12; "Client"; Text[100])
@@ -71,6 +72,16 @@ table 50115 Depense
         {
             Caption = 'Commentaire';
         }
+        field(16; IdDepenses; code[20])
+        {
+            Caption = 'Id Depenses';
+
+        }
+        field(17; "Doc No."; code[20])
+        {
+            Caption = 'Doc No.';
+
+        }
 
     }
 
@@ -80,10 +91,17 @@ table 50115 Depense
         {
             Clustered = true;
         }
-    }
-    trigger OnInsert();
-    begin
-        rec.Client := USERID;
+        key(PK2; IdDepenses)
+        {
 
+        }
+
+    }
+
+
+    trigger OnInsert()
+    begin
+
+        Rec.Client := USERID;
     end;
 }

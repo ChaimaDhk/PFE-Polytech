@@ -8,7 +8,7 @@ page 50142 DemandeaValider
     PageType = List;
     SourceTable = Conges;
     UsageCategory = Administration;
-    SourceTableView = where(Statut = const(Transmise));
+    SourceTableView = where("Approval Status" = const(Transmise));
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;
@@ -19,78 +19,52 @@ page 50142 DemandeaValider
         {
             repeater(General)
             {
+                field("IdCongé"; Rec."Id Congé")
+                {
+                    ToolTip = 'Specifies the value of the IdCongé field.';
+                    caption = 'Id de congé';
+                }
                 field(DatedeDebut; Rec.DatedeDebut)
                 {
                     ToolTip = 'Specifies the value of the DatedeDebut field.';
+                    caption = 'Date de Debut';
                 }
                 field(DatedeReprise; Rec.DatedeReprise)
                 {
                     ToolTip = 'Specifies the value of the DatedeReprise field.';
+                    caption = 'Date de Reprise';
                 }
                 field("Nombre de Jours"; Rec."Nombre de Jours")
                 {
                     ToolTip = 'Specifies the value of the NombreJours field.';
+                    caption = 'Nombre de Jours';
                 }
                 field("Employé"; Rec."Employé")
                 {
                     ToolTip = 'Specifies the value of the NombreJours field.';
+                    caption = 'Employé';
                 }
                 field(Remplacant; Rec.Remplacant)
                 {
                     ToolTip = 'Specifies the value of the Remplacant field.';
+                    caption = 'Remplaçant';
                 }
                 field("TypeCongé"; Rec."TypeCongé")
                 {
                     ToolTip = 'Specifies the value of the TypeCongé field.';
+                    caption = 'Type de congé';
                 }
-                field(Statut; Rec.Statut)
+                field("Approval Status"; Rec."Approval Status")
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
+
+                    Editable = false;
                 }
 
             }
         }
     }
 
-    actions
-    {
-        area(Processing)
-        {
-            action(Valider)
-            {
-                ApplicationArea = All;
-                Caption = 'Valider';
-                trigger OnAction()
-                var
-                    StatutRec: Record "Conges";
-                begin
-                    BEGIN
-                        Rec."Statut" := Rec."Statut"::Validée;
-                        Rec.MODIFY;
-                        MESSAGE('La demande est validée avec succès');
-                        //email  !!!!!!
-                    END;
-                end;
-            }
-
-            action(Réfuser)
-            {
-                ApplicationArea = All;
-                Caption = 'Réfuser';
-                trigger OnAction()
-                var
-                    StatutRec: Record "Conges";
-                begin
-                    BEGIN
-                        Rec."Statut" := Rec."Statut"::Réfusée;
-                        Rec.MODIFY;
-                        MESSAGE('La demande est réfusée ');
-                        //email  !!!!!!
-                    END;
-                end;
-            }
-        }
-    }
 
 
 

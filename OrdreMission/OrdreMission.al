@@ -21,11 +21,12 @@ table 50145 OrdreMission
         }
         field(3; DateDebut; Date)
         {
-            Caption = 'DateDebut';
+            Caption = 'Date de Début';
+
         }
         field(4; DateFin; Date)
         {
-            Caption = 'DateFin';
+            Caption = 'Date de Fin';
         }
         field(5; Titre; Text[100])
         {

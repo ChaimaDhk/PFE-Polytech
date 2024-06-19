@@ -16,7 +16,7 @@ table 50149 "Conges"
         field(2; "TypeCongé"; Option)
         {
             Caption = 'Type de Congé';
-            OptionMembers = "Autorisation de sortie","Congé Annuel","Congé de maladie","Autre";
+            OptionMembers = "Autorisation de sortie","Congé Annuel","Congé de maladie";
         }
         field(3; Remplacant; Text[50])
         {
@@ -53,12 +53,29 @@ table 50149 "Conges"
         field(11; "Statut"; Option)
         {
             Caption = 'Statut';
-            OptionMembers = "Refusée","Transmise","Non Transmise","Validée","Réfusée";
+            OptionMembers = "Open","Pending Approval","Released";
+        }
+        field(16; "Approval Status"; Option)
+        {
+            Caption = 'Approval Status';
+            OptionMembers = "Ouvert","Transmise","Validée";
+            OptionCaption = 'Ouvert,Transmise,Validée';
         }
         field(12; "Employé"; Text[100])
         {
             Caption = 'Employé';
         }
+        field(13; "No conge"; code[20])
+        {
+            Caption = 'No conge';
+            TableRelation = "No. Series";
+        }
+        field(15; "Doc No."; code[20])
+        {
+            Caption = 'Doc No.';
+
+        }
+
     }
     keys
     {

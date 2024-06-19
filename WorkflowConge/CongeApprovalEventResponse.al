@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit Workflow Response Handling Ext (ID 50105).
+/// Codeunit Workflow Response Handling Ext (ID 50111).
 /// </summary>
 codeunit 50111 WorkflowRespHandlingExt1
 {
@@ -19,7 +19,7 @@ codeunit 50111 WorkflowRespHandlingExt1
             DataBase::Conges:
                 begin
                     RecRef.SetTable(Request);
-                    Request."Approval Status" := Request."Approval Status"::Open;
+                    Request."Approval Status" := Request."Approval Status"::Ouvert;
                     Request.Modify;
                     Handled := true;
                 end;
@@ -38,7 +38,7 @@ codeunit 50111 WorkflowRespHandlingExt1
             DataBase::Conges:
                 begin
                     RecRef.SetTable(Request);
-                    Request."Approval Status" := Request."Approval Status"::Released;
+                    Request."Approval Status" := Request."Approval Status"::Transmise;
                     Request.Modify;
                     Handled := true;
                 end;
@@ -55,7 +55,7 @@ codeunit 50111 WorkflowRespHandlingExt1
             DataBase::Conges:
                 begin
                     RecRef.SetTable(Request);
-                    Request."Approval Status" := Request."Approval Status"::"Pending Approval";
+                    Request."Approval Status" := Request."Approval Status"::"Transmise";
                     Request.Modify;
                     IsHandled := true;
                 end;

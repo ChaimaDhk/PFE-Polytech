@@ -24,11 +24,13 @@ page 50135 NotesDeFraisavalider
                 field(DateDebut; Rec.DateDebut)
                 {
                     ToolTip = 'Specifies the value of the DateDebut field.';
+                    Caption = 'Date de Debut';
                     Editable = false;
                 }
                 field(DateFin; Rec.DateFin)
                 {
                     ToolTip = 'Specifies the value of the DateFin field.';
+                    Caption = ' Date de fin';
                     Editable = false;
                 }
                 field(Description; Rec.Description)
@@ -42,4 +44,8 @@ page 50135 NotesDeFraisavalider
             }
         }
     }
+
 }
+
+
+
