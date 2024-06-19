@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - main  # Déclenche le pipeline sur des modifications dans la branche main
+
+pool:
+  vmImage: 'windows-latest'  # Image de la machine virtuelle à utiliser pour les tests
+
+steps:
+- script: |
+    echo Installation des dépendances...
+    npm install  # Exemple: Installer les dépendances nécessaires pour les tests
+  displayName: 'Installer les dépendances'
+
+- script: |
+    echo Exécution des tests pour le module congés...
+    # Commande pour exécuter les tests du module congés
+    # Exemple: npm test ou dotnet test ou tout autre commande spécifique à votre framework de test
+  displayName: 'Tests du module congés'
+
+- script: |
+    echo Exécution des tests pour le module notes de frais...
+    # Commande pour exécuter les tests du module notes de frais
+    # Exemple: npm test ou dotnet test ou tout autre commande spécifique à votre framework de test
+  displayName: 'Tests du module notes de frais'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'  # Format des résultats de test
+    testResultsFiles: '**/TEST-*.xml'  # Chemin des fichiers de résultats de test
+    failTaskOnFailedTests: true  # Échouer la tâche en cas de tests échoués
+  displayName: 'Publier les résultats des tests'
