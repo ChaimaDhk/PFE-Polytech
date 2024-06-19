@@ -843,25 +843,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control Pays - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3190009970 - Control 3763843702 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Refacturable field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control Refacturable - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 3190009970 - Control 1153239226 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Titre field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control Titre - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3190009970 - Control 4041544389 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Total Remboursable (devise) field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control TotalRemboursableDevise - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3190009970 - Control 4041544389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total Remboursable(EUR)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control TotalRemboursableDevise - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3190009970 - Control 3492536229 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the TTC (devise) field.</source>
@@ -869,7 +854,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control TTCDevise - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3190009970 - Control 3492536229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TTC (EUR)</source>
+          <source>Montant</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DemandeDepense - Control TTCDevise - Property Caption</note>
         </trans-unit>
@@ -1239,7 +1224,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page MesDepense - Control TTC (devise) - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1096973745 - Control 4203268078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TTC (EUR)</source>
+          <source>Montant</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page MesDepense - Control TTC (devise) - Property Caption</note>
         </trans-unit>
