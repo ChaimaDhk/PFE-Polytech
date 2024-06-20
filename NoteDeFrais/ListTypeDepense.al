@@ -1,7 +1,7 @@
 /// <summary>
-/// Page ListTypeDépense (ID 50101).
+/// Page ListTypeDépense (ID 50128).
 /// </summary>
-page 50101 "ListTypeDépense"
+page 50128 "ListTypeDépense"
 {
     ApplicationArea = All;
     Caption = 'ListTypeDépense';

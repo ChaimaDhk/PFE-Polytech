@@ -233,6 +233,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Depense - Field TypeDepense - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2983251736 - Field 2440561761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type de Dépense</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Depense - Field TypeDepenses - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1440600412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>FraisKilometrique</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -477,6 +482,21 @@
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table OrdreMission - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1626459964 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type Dépense</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TypeDépense - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1626459964 - Field 2676841683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id de Vehicule</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TypeDépense - Field IdTypeDepense - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1626459964 - Field 1404610440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nom</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TypeDépense - Field Nom - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3476290935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vehicule</source>
@@ -1067,6 +1087,26 @@
           <source>Specifies the value of the Description field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JoursFeries - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 212281062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ListTypeDépense</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ListTypeDépense - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 212281062 - Control 2676841683 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the id field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ListTypeDépense - Control IdTypeDepense - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 212281062 - Control 1404610440 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Nom field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ListTypeDépense - Control Nom - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 212281062 - Control 1404610440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Marque</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ListTypeDépense - Control Nom - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1970568145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ListVehicule</source>
