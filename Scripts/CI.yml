@@ -1,0 +1,27 @@
+trigger:
+- main
+
+pool:
+name: 'default'
+
+variables:
+- group: BuilVariables
+
+jobs:
+- job: Build
+  timeoutInMinutes: 300
+  variables:
+   build.clean: all
+   platform: x64
+   version: 'ci'
+   appVersion: '2.0'
+   appBuild: $(Build.BuildID)
+   appRevision: 0
+   createRuntimePackages: True 
+   skipComponentGovernanceDetection: True
+  steps:
+      - task: PowerShell@2
+        displayName: 'set BuildNumber'
+        inputs:
+            targetType: inline
+            script: 'write-host "##vso[build.updatebuildnumber]$(appVersion).$(appBuild).$(appRevision)"'
