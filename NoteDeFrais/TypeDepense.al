@@ -3,14 +3,14 @@
 /// </summary>
 table 50140 "TypeDépense"
 {
-    Caption = 'Type Dépense';
+    Caption = 'Type de dépense';
     DataClassification = ToBeClassified;
 
     fields
     {
         field(1; IdTypeDepense; Integer)
         {
-            Caption = 'Id de Vehicule';
+            Caption = 'Id de depense';
             AutoIncrement = true;
         }
 

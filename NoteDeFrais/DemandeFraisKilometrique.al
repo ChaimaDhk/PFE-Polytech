@@ -1,7 +1,7 @@
 /// <summary>
 /// Page DemandeFraisKilometrique (ID 50120).
 /// </summary>
-page 50133 DemandeFraisKilometrique
+page 50133 "DemandeFraisKilometrique"
 {
     ApplicationArea = All;
     Caption = 'Demande de Frais Kilometrique';
@@ -14,7 +14,7 @@ page 50133 DemandeFraisKilometrique
         {
             group(General)
             {
-                Caption = 'General';
+                Caption = 'Frais Kilometrique';
 
                 field(Titre; Rec.Titre)
                 {
@@ -28,17 +28,18 @@ page 50133 DemandeFraisKilometrique
                 {
                     ToolTip = 'Specifies the value of the Arrivé field.';
                 }
-                field("Type  de véhicule"; Rec."Type")
+                field("Type de véhicule"; Rec."Type")
                 {
                     ToolTip = 'Specifies the value of the type field.';
-                    Caption = 'Type  de véhicule';
+                    Caption = 'Type de véhicule';
 
                     trigger OnLookup(var Text: Text): Boolean
-
+                    var
+                        vehicule: Record Vehicule;
                     begin
                         vehicule.Reset();
                         if Page.RunModal(Page::"ListVehicule", vehicule) = Action::LookupOK then
-                            rec."Type" := vehicule."Nom";
+                            Rec."Type" := vehicule."Nom";
                     end;
                 }
                 field("Distance parcourue (KM)"; Rec."Distance parcourue (KM)")
@@ -50,27 +51,20 @@ page 50133 DemandeFraisKilometrique
                     ToolTip = 'Specifies the value of the Nombre de trajets field.';
                     trigger OnValidate()
                     begin
-                        BEGIN
-                            Rec."Distance totale parcourue (KM)" := Rec."Distance parcourue (KM)" * Rec."Nombre de trajets";
-
-                            Rec."TTC1" := Rec."Distance totale parcourue (KM)" * vehicule.Coef;
-                        END;
+                        Rec."Distance totale parcourue (KM)" := Rec."Distance parcourue (KM)" * Rec."Nombre de trajets";
+                        Rec."TTC1" := Rec."Distance totale parcourue (KM)" * vehicule.Coef;
                     end;
                 }
                 field("Distance totale parcourue (KM)"; Rec."Distance totale parcourue (KM)")
                 {
                     Editable = false;
                     ToolTip = 'Specifies the value of the Distance totale parcourue (KM) field.';
-
-
-
                 }
                 field("TTC (Devise)"; Rec."TTC1")
                 {
                     Editable = false;
                     ToolTip = 'Specifies the value of the TTC (Devise) field.';
                     Caption = 'TTC (EUR)';
-
                 }
                 field("Date de Début"; Rec."Date de Début")
                 {
@@ -89,6 +83,7 @@ page 50133 DemandeFraisKilometrique
             }
         }
     }
+
     var
         vehicule: Record Vehicule;
 }

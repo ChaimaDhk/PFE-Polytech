@@ -4,7 +4,7 @@
 page 50140 "DemandeDeCongé"
 {
     ApplicationArea = All;
-    Caption = 'Demande De Congé';
+    Caption = 'Demande de Congé';
     PageType = Card;
     SourceTable = "Conges";
     UsageCategory = Administration;
@@ -21,15 +21,14 @@ page 50140 "DemandeDeCongé"
                 {
                     ToolTip = 'Specifies the value of the Type de Congé field.';
                     Caption = 'Type de congé';
-
+                    Editable = not IsReadOnly;
                 }
                 field(Remplacant; Rec.Remplacant)
                 {
                     Caption = 'Remplacant';
                     ToolTip = 'Specifies the value of the Remplacant field.';
-
+                    Editable = not IsReadOnly;
                     trigger OnLookup(var Text: Text): Boolean
-
                     begin
                         emp.Reset();
                         if Page.RunModal(Page::"Employee List", emp) = Action::LookupOK then
@@ -41,29 +40,30 @@ page 50140 "DemandeDeCongé"
                     ToolTip = 'Specifies the value of the Date de Début field.';
                     Caption = 'Date de Début';
 
+                    Editable = not IsReadOnly;
+
+
                 }
                 field("Date de Début aprés-midi"; Rec."Date de Début aprés-midi")
                 {
                     ToolTip = 'Specifies the value of the Date de Début field.';
+                    Editable = not IsReadOnly and (Rec."TypeCongé" = Rec."TypeCongé"::"Autorisation de Sortie");
                     trigger OnValidate()
                     begin
-
                         if Rec."TypeCongé" <> Rec."TypeCongé"::"Autorisation de Sortie" then begin
                             rec."Date de Début aprés-midi" := false;
                             Message('Cette option est uniquement disponible pour les autorisations de sortie.');
                         end;
                         if rec."Date de Début aprés-midi" then begin
                             rec."Date de Reprise aprés-midi" := false;
-
-
                         end;
                     end;
                 }
-
                 field("Date de Reprise"; Rec."DatedeReprise")
                 {
                     Caption = 'Date de Reprise';
                     ToolTip = 'Specifies the value of the date de Reprise field.';
+                    Editable = not IsReadOnly;
                     trigger OnValidate()
                     var
                         Calculduree: Codeunit Calculduree;
@@ -75,16 +75,13 @@ page 50140 "DemandeDeCongé"
                         utilisateur: Record User;
                         employe: Record Employee;
                         soldeconge: Decimal;
+
                     begin
-
-
-
 
                         // Get the start and end dates from the selected record
                         startDate := Rec."DatedeDebut";
                         endDate := Rec."DatedeReprise";
                         if Rec."TypeCongé" = Rec."TypeCongé"::"Autorisation de Sortie" then begin
-
                             rec.DatedeReprise := rec.DatedeDebut;
                             Message('Date de début de congé doit étre égale a la date de reprise');
                         end;
@@ -93,7 +90,6 @@ page 50140 "DemandeDeCongé"
                         Rec."Nombre de Jours" := businessDays - 1;
                         if Rec."DatedeReprise" = Rec."DatedeDebut" then
                             Rec."Nombre de Jours" := 0.5;
-
 
                         // Set filter to find the employee record based on the current user's fullname
                         employe.SETFILTER(employe."Employé", USERID);
@@ -107,53 +103,45 @@ page 50140 "DemandeDeCongé"
                             Rec."Solde de Congé" := employe."Solde de Conge";
                         END ELSE
                             Message('Employé non trouvé.');
-
                     end;
                 }
-
                 field("Date de Reprise aprés-midi"; Rec."Date de Reprise aprés-midi")
                 {
                     ToolTip = 'Specifies the value of the date de Reprise field.';
+                    Editable = not IsReadOnly and (Rec."TypeCongé" = Rec."TypeCongé"::"Autorisation de Sortie");
                     trigger OnValidate()
                     begin
-
                         if Rec."TypeCongé" <> Rec."TypeCongé"::"Autorisation de Sortie" then begin
                             message('Cette option est uniquement disponible pour les autorisations de sortie.');
                             rec."Date de Reprise aprés-midi" := false;
                         end;
                         if rec."Date de Reprise aprés-midi" then begin
-                            rec."Date de Début aprés-midi" := false;    // Si "Date de Reprise" est égale à "Date de Début du Congé"
-
+                            rec."Date de Début aprés-midi" := false;
                         end;
                     end;
-
-
-
-
                 }
                 field("Nombre de Jours"; Rec."Nombre de Jours")
                 {
                     ToolTip = 'Specifies the value of the Nombre de Jours field.';
                     Editable = false;
-
                 }
                 field("Solde de Congé"; Rec."Solde de Congé")
                 {
                     ToolTip = 'Specifies the value of the Solde de Congé field.';
                     Editable = false;
-
                 }
-
                 field(Commentaire; Rec.Commentaire)
                 {
-                    ToolTip = 'Specifies the value of the Commantaire field.';
+                    ToolTip = 'Specifies the value of the Commentaire field.';
                     MultiLine = true;
+                    Editable = not IsReadOnly;
                 }
             }
             part("Attached Documents"; "Document Attachment Factbox")
             {
                 ApplicationArea = All;
                 Caption = 'Attachments';
+                Editable = not IsReadOnly;
                 SubPageLink = "Table ID" = const(Database::Item),
                               "No." = field("Doc No.");
             }
@@ -165,11 +153,18 @@ page 50140 "DemandeDeCongé"
             {
                 ApplicationArea = Notes;
             }
-
         }
     }
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        IsReadOnly := (Rec."Approval Status" = Rec."Approval Status"::"Transmise") or
+                      (Rec."Approval Status" = Rec."Approval Status"::"Validée");
+    end;
+
+
+
     var
         emp: Record Employee;
-
+        IsReadOnly: Boolean;
 }

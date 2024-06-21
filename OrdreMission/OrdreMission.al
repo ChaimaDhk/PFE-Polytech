@@ -3,7 +3,7 @@
 /// </summary>
 table 50145 OrdreMission
 {
-    Caption = 'OrdreMission';
+    Caption = 'Ordre de Mission';
     DataClassification = ToBeClassified;
 
 

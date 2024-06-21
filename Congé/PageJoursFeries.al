@@ -4,7 +4,7 @@
 page 50129 JoursFeries
 {
     ApplicationArea = All;
-    Caption = 'JoursFeries';
+    Caption = 'Les jours feries';
     PageType = List;
     SourceTable = "JourFeriés";
     UsageCategory = Administration;

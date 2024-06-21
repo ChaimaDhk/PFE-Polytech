@@ -4,7 +4,7 @@
 page 50128 "ListTypeDépense"
 {
     ApplicationArea = All;
-    Caption = 'ListTypeDépense';
+    Caption = 'List de type de dépense';
     PageType = List;
     SourceTable = "TypeDépense";
     UsageCategory = Administration;
@@ -21,7 +21,7 @@ page 50128 "ListTypeDépense"
                 }
                 field(Nom; Rec.Nom)
                 {
-                    Caption = 'Marque';
+                    Caption = 'Nom';
                     ToolTip = 'Specifies the value of the Nom field.', Comment = '%';
                 }
             }

@@ -12,6 +12,7 @@ pageextension 50102 SoldeEmployeExt extends "Employee List"
             {
                 ApplicationArea = All;
                 Caption = 'Solde de Congé';
+                Editable = false;
             }
         }
 

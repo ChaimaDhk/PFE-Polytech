@@ -4,11 +4,11 @@
 page 50149 OrdreaValider
 {
     ApplicationArea = All;
-    Caption = 'Ordre a Valider';
+    Caption = 'Les Ordre de mission Valider';
     PageType = List;
     SourceTable = Mission;
     UsageCategory = Administration;
-    SourceTableView = where(Statut = const(Transmise));
+    SourceTableView = where(Statut = const("Validée"));
     DeleteAllowed = false;
     InsertAllowed = false;
 

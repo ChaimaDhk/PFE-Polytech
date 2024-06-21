@@ -4,7 +4,7 @@
 page 50110 ListVehicule
 {
     ApplicationArea = All;
-    Caption = 'ListVehicule';
+    Caption = 'List des vehicules';
     PageType = List;
     SourceTable = Vehicule;
     UsageCategory = Administration;

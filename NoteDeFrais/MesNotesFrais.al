@@ -22,6 +22,15 @@ page 50113 MesNotesFrais
                     ToolTip = 'Specifies the value of the IdNote field.';
                     Caption = 'Id de note de frais';
                 }
+                field(Titre; Rec.Titre)
+                {
+                    ToolTip = 'Specifies the value of the Titre field.';
+                }
+                field(Mission; Rec.Mission)
+                {
+                    ToolTip = 'Specifies the value of the IdNote field.';
+                    Caption = 'Ordre de Mission';
+                }
                 field(DateDebut; Rec.DateDebut)
                 {
                     ToolTip = 'Specifies the value of the DateDebut field.';
@@ -33,10 +42,6 @@ page 50113 MesNotesFrais
                     ToolTip = 'Specifies the value of the DateFin field.';
                     Caption = 'Date de fin';
                     Editable = false;
-                }
-                field(Titre; Rec.Titre)
-                {
-                    ToolTip = 'Specifies the value of the Titre field.';
                 }
                 field(Description; Rec.Description)
                 {
