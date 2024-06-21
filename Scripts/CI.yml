@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'my-personal-computer'
+  vmImage: 'windows-latest'
 
 variables:
 - group: BuildVariables
