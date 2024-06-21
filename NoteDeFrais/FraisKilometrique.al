@@ -3,7 +3,7 @@
 /// </summary>
 table 50116 FraisKilometrique
 {
-    Caption = 'FraisKilometrique';
+    Caption = 'Frais Kilometrique';
     DataClassification = ToBeClassified;
 
     fields

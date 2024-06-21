@@ -4,7 +4,7 @@
 page 50119 MesDepense
 {
     ApplicationArea = All;
-    Caption = 'Mes Depenses';
+    Caption = 'Mes Dépenses';
     PageType = List;
     SourceTable = Depense;
     UsageCategory = Administration;

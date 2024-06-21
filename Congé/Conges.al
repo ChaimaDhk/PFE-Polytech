@@ -16,7 +16,7 @@ table 50149 "Conges"
         field(2; "TypeCongé"; Option)
         {
             Caption = 'Type de Congé';
-            OptionMembers = "Autorisation de sortie","Congé Annuel","Congé de maladie";
+            OptionMembers = "","Autorisation de sortie","Congé Annuel","Congé de maladie";
         }
         field(3; Remplacant; Text[50])
         {

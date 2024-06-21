@@ -10,68 +10,73 @@ pageextension 50136 BusinessManagerRCExt extends "Order Processor Role Center"
             group("Congé")
             {
                 Caption = 'Congé';
-                action("Demande De Congé")
+                action("Mes demandes de Congé")
                 {
                     ApplicationArea = All;
-                    Caption = 'Demande De Congé';
+                    Caption = 'Mes demandes de Congé';
                     RunObject = Page "MesDemandesCongé";
+                }
+                action("Mes titres de congé")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Mes titres de congé';
+                    RunObject = Page "TitreCongé";
                 }
                 action("Demande De Congé à valider")
                 {
                     ApplicationArea = All;
-                    Caption = 'Demande De Congé à valider';
+                    Caption = 'Demandes de Congé valider';
                     RunObject = Page "DemandeaValider";
                 }
-                action("Titre de congé")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Titre de congé';
-                    RunObject = Page "TitreCongé";
-                }
+
             }
         }
         addafter(Congé)
         {
-            group("Note de frais")
+            group("Traitements")
             {
-                Caption = 'Note de frais';
-                action("Mes Ordres de Missions")
+                group("Ordres de mission")
                 {
-                    ApplicationArea = All;
-                    Caption = 'Mes Ordres de Missions';
-                    RunObject = Page "MesOrdres";
+                    action("Mes Ordres de Missions")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Mes Ordres de Missions';
+                        RunObject = Page "MesOrdres";
+                    }
+                    action("Mes ordres de missions valider")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Mes ordres de missions valider';
+                        RunObject = Page "OrdreaValider";
+                    }
                 }
-                action("Mes ordres de missions à valider")
+                group("Notes de frais")
                 {
-                    ApplicationArea = All;
-                    Caption = 'Mes ordres de missions à valider';
-                    RunObject = Page "OrdreaValider";
+                    action(" Mes Notes de frais")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Mes notes de frais';
+                        RunObject = Page "MesNotesFrais";
+                    }
+                    action(" Mes Depénses")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Mes Depénses';
+                        RunObject = Page "MesDepense";
+                    }
+                    action("Mes Frais Kilométriques")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Mes Frais Kilométriques';
+                        RunObject = Page MesFraisKilometrique;
+                    }
+                    action("Notes de frais à valider")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Mes notes de frais à valider';
+                        RunObject = Page NotesDeFraisavalider;
+                    }
                 }
-                action(" Mes Notes de frais")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Mes Notes de frais';
-                    RunObject = Page "MesNotesFrais";
-                }
-                action(" Mes Depénses")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Mes Depénses';
-                    RunObject = Page "MesDepense";
-                }
-                action("Mes Frais Kilométriques")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Mes Frais Kilométriques';
-                    RunObject = Page MesFraisKilometrique;
-                }
-                action("Notes de frais à valider")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Notes de frais à valider';
-                    RunObject = Page NotesDeFraisavalider;
-                }
-
             }
         }
         addafter(Items)

@@ -20,14 +20,29 @@ page 50112 DemandeDepense
                 {
                     ToolTip = 'Specifies the value of the Titre field.';
                 }
-                field(TypeDepense; Rec.TypeDepense)
+                field(TypeDepense; Rec.TypeDepenses)
                 {
                     ToolTip = 'Specifies the value of the TypeDepense field.';
                     Caption = 'Type de dépense';
+                    trigger OnLookup(var Text: Text): Boolean
+
+                    begin
+                        type.Reset();
+                        if Page.RunModal(Page::"ListTypeDépense", type) = Action::LookupOK then
+                            rec."TypeDepenses" := type.Nom;
+                    end;
                 }
                 field(Pays; Rec.Pays)
                 {
                     ToolTip = 'Specifies the value of the Pays field.';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        countrie: Record "Country/Region";
+                    begin
+                        countrie.Reset();
+                        if Page.RunModal(Page::"Countries/Regions", countrie) = Action::LookupOK then
+                            Rec.Pays := countrie."Name";
+                    end;
                 }
                 field(TTCDevise; Rec."TTC (devise)")
                 {
@@ -89,5 +104,6 @@ page 50112 DemandeDepense
         }
 
     }
-
+    var
+        type: Record "TypeDépense";
 }

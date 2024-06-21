@@ -4,11 +4,11 @@
 page 50135 NotesDeFraisavalider
 {
     ApplicationArea = All;
-    Caption = 'NotesDeFraisavalider';
+    Caption = 'Notes de frais valider';
     PageType = List;
     SourceTable = NotesDeFrais;
     UsageCategory = Administration;
-    SourceTableView = where(Statut = const(Transmise));
+    SourceTableView = where(Statut = const("Validée"));
     Editable = false;
 
     layout

@@ -10,7 +10,6 @@ page 50141 "MesDemandesCongé"
     UsageCategory = Administration;
     CardPageId = "DemandeDeCongé";
 
-
     layout
     {
         area(content)
@@ -26,28 +25,37 @@ page 50141 "MesDemandesCongé"
                 {
                     Caption = 'Date de Début';
                     ToolTip = 'Specifies the value of the DateDebut field.';
-                    Editable = false;
+                    Editable = not IsReadOnly;
                 }
                 field("Date de Reprise"; Rec."DatedeReprise")
                 {
                     Caption = 'Date de Reprise';
                     ToolTip = 'Specifies the value of the dateReprise field.';
-                    Editable = false;
+                    Editable = not IsReadOnly;
                 }
                 field("Nombre de Jours"; Rec."Nombre de Jours")
                 {
                     Caption = 'Nombre de Jours';
                     ToolTip = 'Specifies the value of the NombreJours field.';
+                    Editable = not IsReadOnly;
                 }
                 field(Remplacant; Rec.Remplacant)
                 {
-                    Caption = ' Remplacant';
+                    Caption = 'Remplacant';
                     ToolTip = 'Specifies the value of the Remplacant field.';
+                    Editable = not IsReadOnly;
+                }
+                field("SoldeDeCongé"; Rec."Solde de Congé")
+                {
+                    Caption = 'Solde de Congé';
+                    ToolTip = 'Specifies the value of the SoldeDeCongé field.';
+                    Editable = not IsReadOnly;
                 }
                 field("TypeCongé"; Rec."TypeCongé")
                 {
                     Caption = 'Type de Congé';
                     ToolTip = 'Specifies the value of the TypeCongé field.';
+                    Editable = not IsReadOnly;
                 }
                 field("Approval Status"; Rec."Approval Status")
                 {
@@ -58,22 +66,21 @@ page 50141 "MesDemandesCongé"
             }
         }
     }
+
     actions
     {
         area(Navigation)
         {
-
             group("SendApproval")
             {
                 Caption = 'Envoyer demande approbation';
                 Image = SendApprovalRequest;
-                action("Envoyer demande approbtion")
+                action("Envoyer demande approbation")
                 {
                     ApplicationArea = all;
                     Caption = 'Envoyer demande approbation';
                     Image = SendApprovalRequest;
                     Promoted = true;
-
                     ToolTip = 'Release the document to the next stage of processing. When a document is released, it will be included in all availability calculations from the expected receipt date of the items. You must reopen the document before you can make changes to it.';
 
                     trigger OnAction()
@@ -82,8 +89,6 @@ page 50141 "MesDemandesCongé"
                     begin
                         IF ApprovalsMgmtCut.CheckRequestApprovalsWorkflowEnable(Rec) THEN
                             ApprovalsMgmtCut.OnSendRequestForApproval(Rec);
-
-
                     end;
                 }
                 action("Cancel Approval Request")
@@ -98,7 +103,6 @@ page 50141 "MesDemandesCongé"
                     trigger OnAction()
                     begin
                         ApprovalsMgmtCut.OnCancelRequestForApproval(Rec);
-
                     end;
                 }
                 action(Approve)
@@ -109,16 +113,15 @@ page 50141 "MesDemandesCongé"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedOnly = true;
-                    trigger OnAction();
+                    trigger OnAction()
                     begin
                         ApprovalsMgmt.ApproveRecordApprovalRequest(Rec.RecordId);
                     end;
                 }
-
             }
-
         }
     }
+
     trigger OnAfterGetCurrRecord()
     begin
         OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(Rec.RecordId);
@@ -126,6 +129,8 @@ page 50141 "MesDemandesCongé"
         CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RecordId);
         WorkflowWebhookMgt.GetCanRequestAndCanCancel(Rec.RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
 
+        IsReadOnly := (Rec."Approval Status" = Rec."Approval Status"::"Transmise") or
+                      (Rec."Approval Status" = Rec."Approval Status"::"Validée");
     end;
 
     var
@@ -137,5 +142,5 @@ page 50141 "MesDemandesCongé"
         CanCancelApprovalForRecord: Boolean;
         CanRequestApprovalForFlow: Boolean;
         CanCancelApprovalForFlow: Boolean;
-
+        IsReadOnly: Boolean;
 }

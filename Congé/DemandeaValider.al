@@ -4,11 +4,11 @@
 page 50142 DemandeaValider
 {
     ApplicationArea = All;
-    Caption = 'Demandes a Valider';
+    Caption = 'Demandes Valider';
     PageType = List;
     SourceTable = Conges;
     UsageCategory = Administration;
-    SourceTableView = where("Approval Status" = const(Transmise));
+    SourceTableView = where("Approval Status" = const("Validée"));
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;

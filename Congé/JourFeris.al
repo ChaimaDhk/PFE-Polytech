@@ -3,7 +3,7 @@
 /// </summary>
 table 50132 "JourFeriés"
 {
-    Caption = 'JourFeriés';
+    Caption = 'Jours Feriés';
     DataClassification = ToBeClassified;
 
     fields

@@ -12,6 +12,7 @@ pageextension 50101 EmployeeSolde extends "Employee Card"
             {
                 ApplicationArea = All;
                 Caption = 'Solde de Congé';
+                Editable = false;
             }
         }
         addafter("Privacy Blocked") // Assuming this field exists on the Employee Card page

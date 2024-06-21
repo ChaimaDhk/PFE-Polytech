@@ -4,11 +4,12 @@
 page 50134 MesFraisKilometrique
 {
     ApplicationArea = All;
-    Caption = 'MesFraisKilometrique';
+    Caption = 'Mes Frais Kilometriques';
     PageType = List;
     SourceTable = FraisKilometrique;
     UsageCategory = Administration;
     CardPageId = DemandeFraisKilometrique;
+
 
     layout
     {

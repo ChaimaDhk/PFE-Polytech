@@ -4,11 +4,11 @@
 page 50136 "TitreCongé"
 {
     ApplicationArea = All;
-    Caption = 'TitreCongé';
+    Caption = 'Mes Titres de congé';
     PageType = List;
     SourceTable = Conges;
     UsageCategory = Administration;
-    SourceTableView = where("Approval Status" = const("Validée"));
+    SourceTableView = where("Approval Status" = filter(Validée | Transmise));
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;

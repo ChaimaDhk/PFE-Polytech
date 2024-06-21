@@ -4,7 +4,7 @@
 page 50146 MesOrdres
 {
     ApplicationArea = All;
-    Caption = 'Mes Ordres';
+    Caption = 'Mes Ordres de mission';
     PageType = List;
     SourceTable = Mission;
     UsageCategory = Administration;
@@ -39,7 +39,7 @@ page 50146 MesOrdres
                 field("Statut"; Rec.Statut)
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
-                    Editable = false;
+                    //  Editable = false;
                 }
             }
         }

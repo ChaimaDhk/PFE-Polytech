@@ -82,6 +82,11 @@ table 50115 Depense
             Caption = 'Doc No.';
 
         }
+        field(18; "TypeDepenses"; text[100])
+        {
+            Caption = 'Type de Dépense';
+
+        }
 
     }
 

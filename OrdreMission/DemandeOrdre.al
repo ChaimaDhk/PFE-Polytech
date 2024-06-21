@@ -4,7 +4,7 @@
 page 50144 DemandeOrdre
 {
     ApplicationArea = All;
-    Caption = 'DemandeOrdre';
+    Caption = 'Demande de ordre de mission';
     PageType = Card;
     SourceTable = Mission;
     UsageCategory = Administration;
@@ -43,11 +43,19 @@ page 50144 DemandeOrdre
                 {
                     Caption = 'Date de début';
                     ToolTip = 'Specifies the value of the DateDebut field.';
+                    trigger OnValidate()
+                    begin
+                        ValidateDates();
+                    end;
                 }
                 field(DateFin; Rec.DateFin)
                 {
                     Caption = 'Date de fin';
                     ToolTip = 'Specifies the value of the DateFin field.';
+                    trigger OnValidate()
+                    begin
+                        ValidateDates();
+                    end;
                 }
                 field(Titre; Rec.Titre)
                 {
@@ -76,5 +84,14 @@ page 50144 DemandeOrdre
     local procedure UpdatePaysVisibility()
     begin
         ShowPaysField := (Rec."Type" = Rec."Type"::"Mission à l'étranger");
+    end;
+
+    local procedure ValidateDates()
+    begin
+        if (Rec.DateDebut <> 0D) and (Rec.DateFin <> 0D) then begin
+            if Rec.DateDebut > Rec.DateFin then begin
+                message('La date de début doit être antérieure à la date de fin.');
+            end;
+        end;
     end;
 }

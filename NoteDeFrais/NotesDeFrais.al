@@ -3,7 +3,7 @@
 /// </summary>
 table 50112 NotesDeFrais
 {
-    Caption = 'NotesDeFrais';
+    Caption = 'Notes de frais';
     DataClassification = ToBeClassified;
 
     fields
@@ -37,6 +37,18 @@ table 50112 NotesDeFrais
 
 
 
+        }
+        field(8; Mission; Text[100])
+        {
+            Caption = 'Ordre de Mission';
+        }
+        field(9; TitreDepense; Text[100])
+        {
+            Caption = 'Titre de Dépense';
+        }
+        field(10; Titrefrais; Text[100])
+        {
+            Caption = 'Titre de Frais kilométrique';
         }
         field(18; "Doc No."; code[20])
         {
