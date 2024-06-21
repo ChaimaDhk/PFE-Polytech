@@ -1,28 +1,64 @@
+# Define the trigger for the pipeline
 trigger:
 - main
-
+ 
+# Define the agent pool
 pool:
   vmImage: 'windows-latest'
-
+ 
 variables:
-- group: BuildVariables
+  - group: BuildVariables
+ 
+# Define stages
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    variables:
+      build.clean: all
+      platform: x64
+      version: "current"
+      appVersion: "1.0"
+      appBuild: $[counter(variables['appVersion'], 0)]
+      appRevision: 0
+      createRuntimePackages: False
+      skipComponentGovernanceDetection: True
+    steps:
+    - task: PowerShell@2
+      displayName: 'Set Execution Policy'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+ 
+    - task: PowerShell@2
+      displayName: 'Update Build Number'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "##vso[build.updatebuildnumber]$(appVersion).$(appBuild).$(appRevision)"
+ 
+    - task: PowerShell@2
+      displayName: 'Install BcContainerHelper'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+          Install-Module -Name BcContainerHelper -Force -SkipPublisherCheck -AllowClobber -Scope CurrentUser
+ 
+    - task: PowerShell@2
+      displayName: 'Copy artifacts to staging directory'
+      inputs:
+        targetType: 'inline'
+        script: |
+          $outputDir = "$(Build.ArtifactStagingDirectory)"
+          if (-not (Test-Path -Path $outputDir)) {
+            New-Item -ItemType Directory -Path $outputDir
+          }
+          Copy-Item -Path "$(System.DefaultWorkingDirectory)\*.app" -Destination $outputDir -Force
 
-jobs:
-- job: Build
-  timeoutInMinutes: 300
-  variables:
-    build.clean: all
-    platform: x64
-    version: 'ci'
-    appVersion: '2.0'
-    appBuild: $(Build.BuildID)
-    appRevision: 0
-    createRuntimePackages: True
-    skipComponentGouvernanceDetection: True
-
-  steps:
-  - task: PowerShell@2
-    displayName: 'Set BuildNumber'
-    inputs:
-      targetType: inline
-      script: 'Write-Host "##vso[build.updatebuildnumber]$(appVersion).$(appBuild).$(appRevision)"'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'MyProject'
