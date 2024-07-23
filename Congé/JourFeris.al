@@ -1,7 +1,7 @@
 /// <summary>
 /// Table JourFeriés (ID 50132).
 /// </summary>
-table 50132 "JourFeriés"
+table 50150 "JourFeriés"
 {
     Caption = 'Jours Feriés';
     DataClassification = ToBeClassified;

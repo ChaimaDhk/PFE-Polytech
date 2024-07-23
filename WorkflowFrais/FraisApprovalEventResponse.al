@@ -38,7 +38,7 @@ codeunit 50136 WorkflowRespHandlingExt4
             DataBase::NotesDeFrais:
                 begin
                     RecRef.SetTable(Request2);
-                    Request2."Statut" := Request2."Statut"::Transmise;
+                    Request2."Statut" := Request2."Statut"::"Validée";
                     Request2.Modify;
                     Handled := true;
                 end;

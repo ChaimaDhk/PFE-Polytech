@@ -2,7 +2,7 @@
   "id": "bcf8153b-fdd0-49ca-b168-70f2505a094b",
   "name": "RHversion1",
   "publisher": "Default Publisher",
-  "version": "1.0.0.0",
+  "version": "1.0.0.22",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -16,8 +16,8 @@
   "application": "23.0.0.0",
   "idRanges": [
     {
-      "from": 50100,
-      "to": 50149
+      "from": 50000,
+      "to": 50600
     }
   ],
   "resourceExposurePolicy": {

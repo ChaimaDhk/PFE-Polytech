@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit CongeValidation (ID 50102).
+/// </summary>
 codeunit 50102 CongeValidation
 
 {

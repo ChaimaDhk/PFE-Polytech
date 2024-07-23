@@ -25,7 +25,5 @@ codeunit 50113 "Page Congé Management Ext1"
             Database::Conges:
                 exit(Page::"MesDemandesCongé");
         end;
-
-
     end;
 }

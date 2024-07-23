@@ -20,6 +20,7 @@ page 50135 NotesDeFraisavalider
                 field(Titre; Rec.Titre)
                 {
                     ToolTip = 'Specifies the value of the Titre field.';
+                    Editable = false;
                 }
                 field(DateDebut; Rec.DateDebut)
                 {
@@ -36,10 +37,12 @@ page 50135 NotesDeFraisavalider
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.';
+                    Editable = false;
                 }
                 field(Statut; Rec.Statut)
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
+                    Editable = false;
                 }
             }
         }

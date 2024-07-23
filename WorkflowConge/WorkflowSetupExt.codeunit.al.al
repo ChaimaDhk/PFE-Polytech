@@ -57,14 +57,16 @@ codeunit 50114 "Workflow Congé Setup Ext1"
                 0, '', BlankDateFormula, true);
 
         WorkflowSetup.InsertDocApprovalWorkflowSteps(
-            Workflow,
-            BuildRequestTypeConditions(Request."Approval Status"::Ouvert),
-            workflowEventHandlingCust.RunWorkflowOnSendRequestForApprovalCode,
-            BuildRequestTypeConditions(Request."Approval Status"::"Transmise"),
-            workflowEventHandlingCust.RunWorkflowOnCancelRequestApprovalCode,
-            workflowStepArgument,
-            true
-        );
+     Workflow,
+     BuildRequestTypeConditions(Request."Approval Status"::Transmise),
+     workflowEventHandlingCust.RunWorkflowOnSendRequestForApprovalCode,
+     BuildRequestTypeConditions(Request."Approval Status"::"Validée"),
+     workflowEventHandlingCust.RunWorkflowOnCancelRequestApprovalCode,
+     workflowStepArgument,
+     true
+ );
+
+
     end;
 
 

@@ -9,6 +9,8 @@ page 50146 MesOrdres
     SourceTable = Mission;
     UsageCategory = Administration;
     CardPageId = "DemandeOrdre";
+    DeleteAllowed = false;
+
 
     layout
     {
@@ -19,27 +21,34 @@ page 50146 MesOrdres
                 field(Titre; Rec.Titre)
                 {
                     ToolTip = 'Specifies the value of the Titre field.';
+                    Editable = not IsReadOnly;
+                }
+                field(Type; Rec.Type)
+                {
+                    ToolTip = 'Specifies the value of the type field.';
+                    Editable = not IsReadOnly;
                 }
                 field(DateDebut; Rec.DateDebut)
                 {
                     ToolTip = 'Specifies the value of the DateDebut field.';
                     Caption = 'Date de début';
-                    Editable = false;
+                    Editable = not IsReadOnly;
                 }
                 field(DateFin; Rec.DateFin)
                 {
                     ToolTip = 'Specifies the value of the DateFin field.';
                     Caption = 'Date de fin';
-                    Editable = false;
+                    Editable = not IsReadOnly;
                 }
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.';
+                    Editable = not IsReadOnly;
                 }
                 field("Statut"; Rec.Statut)
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
-                    //  Editable = false;
+                    Editable = false;
                 }
             }
         }
@@ -71,15 +80,16 @@ page 50146 MesOrdres
                 }
                 action("Cancel Approval Request")
                 {
-                    Visible = CanCancelApprovalForRecord OR CanCancelApprovalForFlow;
                     Image = CancelApprovalRequest;
                     ApplicationArea = All;
                     Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedOnly = true;
+                    Caption = 'Annuler demande approbation';
                     trigger OnAction()
+                    var
+                        WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
                     begin
-                        ApprovalsMgmtCut.OnCancelRequestForApproval1(Rec);
+                        WorkflowWebhookManagement.FindAndCancel(Rec.RecordId);
+                        ApprovalsMgmtCut.OnCancelRequestForApproval1(Rec); // Appel à la méthode du codeunit 50112
 
                     end;
                 }
@@ -98,7 +108,23 @@ page 50146 MesOrdres
                 }
 
             }
-
+            action("Supprimer")
+            {
+                ApplicationArea = All;
+                Image = Delete;
+                Promoted = true;
+                Caption = 'Supprimer';
+                trigger OnAction()
+                begin
+                    // Vérifier le statut avant de supprimer
+                    if ((Rec."Statut" <> Rec."Statut"::"Transmise") and (Rec."Statut" <> Rec."Statut"::"Validée")) then begin
+                        Rec.DELETE;
+                    end
+                    else begin
+                        Message('Vous ne pouvez pas supprimer un congé qui est déjà validé ou transmis.');
+                    end;
+                end;
+            }
         }
     }
     trigger OnAfterGetCurrRecord()
@@ -108,6 +134,8 @@ page 50146 MesOrdres
         CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RecordId);
         WorkflowWebhookMgt.GetCanRequestAndCanCancel(Rec.RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
 
+        IsReadOnly := (Rec.Statut = Rec."Statut"::"Transmise") or
+                      (Rec."Statut" = Rec."Statut"::"Validée");
     end;
 
     var
@@ -119,4 +147,5 @@ page 50146 MesOrdres
         CanCancelApprovalForRecord: Boolean;
         CanRequestApprovalForFlow: Boolean;
         CanCancelApprovalForFlow: Boolean;
+        IsReadOnly: Boolean;
 }

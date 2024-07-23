@@ -11,6 +11,7 @@ page 50149 OrdreaValider
     SourceTableView = where(Statut = const("Validée"));
     DeleteAllowed = false;
     InsertAllowed = false;
+    ModifyAllowed = false;
 
 
     layout
@@ -22,6 +23,7 @@ page 50149 OrdreaValider
                 field(Titre; Rec.Titre)
                 {
                     ToolTip = 'Specifies the value of the Titre field.';
+                    Editable = false;
                 }
                 field(DateDebut; Rec.DateDebut)
                 {
@@ -35,18 +37,16 @@ page 50149 OrdreaValider
                     Caption = 'Date de fin';
                     Editable = false;
                 }
-                field("Employé"; Rec."Employé")
-                {
-                    ToolTip = 'Specifies the value of the Employé field.';
 
-                }
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.';
+                    Editable = false;
                 }
                 field(Statut; Rec.Statut)
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
+                    Editable = false;
                 }
             }
         }

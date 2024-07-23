@@ -10,6 +10,7 @@ page 50119 MesDepense
     UsageCategory = Administration;
     CardPageId = DemandeDepense;
 
+
     layout
     {
         area(content)
@@ -21,7 +22,7 @@ page 50119 MesDepense
                 {
                     ToolTip = 'Specifies the value of the Titre field.';
                 }
-                field(TypeDepense; Rec.TypeDepense)
+                field(TypeDepense; Rec.TypeDepenses)
                 {
                     ToolTip = 'Specifies the value of the TypeDepense field.';
                     Caption = 'Type de dépense';
@@ -32,7 +33,7 @@ page 50119 MesDepense
                     Caption = 'Date de dépense';
                     Editable = false;
                 }
-                field("TTC (devise)"; Rec."TTC (devise)")
+                field("TTC (devise)"; Rec."Montant")
                 {
                     ToolTip = 'Specifies the value of the TTC (devise) field.';
                     Caption = 'Montant';

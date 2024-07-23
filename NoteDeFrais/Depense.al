@@ -28,7 +28,7 @@ table 50115 Depense
         field(5; "Moyens de paiement"; Option)
         {
             Caption = 'Moyens de paiement';
-            OptionMembers = "Espéce","Carte boncaire";
+            OptionMembers = "","Espéce","Carte boncaire";
         }
         field(6; Pays; Text[100])
         {
@@ -42,8 +42,16 @@ table 50115 Depense
         {
             Caption = 'TTC (EUR)';
         }
+        field(19; "Montant"; Decimal)
+        {
+            Caption = 'Montant';
+        }
 
         field(9; "TVA"; Text[100])
+        {
+            Caption = 'TVA';
+        }
+        field(20; "TVA1"; Decimal)
         {
             Caption = 'TVA';
         }

@@ -16,7 +16,7 @@ table 50149 "Conges"
         field(2; "TypeCongé"; Option)
         {
             Caption = 'Type de Congé';
-            OptionMembers = "","Autorisation de sortie","Congé Annuel","Congé de maladie";
+            OptionMembers = " ","Autorisation de sortie","Congé Annuel","Congé de maladie";
         }
         field(3; Remplacant; Text[50])
         {
@@ -57,9 +57,9 @@ table 50149 "Conges"
         }
         field(16; "Approval Status"; Option)
         {
-            Caption = 'Approval Status';
-            OptionMembers = "Ouvert","Transmise","Validée";
-            OptionCaption = 'Ouvert,Transmise,Validée';
+
+            OptionMembers = "Ouvert","Transmise","Validée","Refusé";
+            OptionCaption = 'Ouvert,Transmise,Validée,Refusé"';
         }
         field(12; "Employé"; Text[100])
         {

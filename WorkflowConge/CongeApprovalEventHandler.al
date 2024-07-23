@@ -41,7 +41,7 @@ codeunit 50110 "Workflow Event Handling Ext1"
     begin
         WorkflowManagement.HandleEvent(RunWorkflowOnCancelRequestApprovalCode, Request);
         // if Request.Find() then begin
-        //     Request.Statut := Request.Statut::Transmise;
+        //     Request."Approval Status" := Request."Approval Status"::Transmise;
         //     Request.Modify();
         // end;
     end;

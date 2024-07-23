@@ -22,7 +22,7 @@ codeunit 50145 "MissionValidation"
     begin
         if (Rec.DateDebut <> 0D) and (Rec.DateFin <> 0D) then begin
             if Rec.DateDebut > Rec.DateFin then begin
-                Error('La date de début doit être antérieure à la date de fin.');
+                Message('La date de début doit être antérieure à la date de fin.');
             end;
         end;
     end;

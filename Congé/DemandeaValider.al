@@ -57,6 +57,7 @@ page 50142 DemandeaValider
                 field("Approval Status"; Rec."Approval Status")
                 {
                     ToolTip = 'Specifies the value of the Statut field.';
+                    Caption = 'Statut';
 
                     Editable = false;
                 }

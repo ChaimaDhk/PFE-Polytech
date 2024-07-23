@@ -1,12 +1,12 @@
 /// <summary>
-/// Page DemandeFraisKilometrique (ID 50120).
+/// Page Ajouter Frais Kilométrique (ID 50173).
 /// </summary>
-page 50133 "DemandeFraisKilometrique"
+page 50173 DemandeFraisKilometrique
 {
     ApplicationArea = All;
-    Caption = 'Demande de Frais Kilometrique';
+    Caption = 'Ajouter Frais Kilométrique';
     PageType = Card;
-    SourceTable = FraisKilometrique;
+    SourceTable = fraiskilometrique;
 
     layout
     {
@@ -14,76 +14,75 @@ page 50133 "DemandeFraisKilometrique"
         {
             group(General)
             {
-                Caption = 'Frais Kilometrique';
+                Caption = 'General';
 
-                field(Titre; Rec.Titre)
+                field(TitreFrais; Rec.Titre)
                 {
-                    ToolTip = 'Specifies the value of the Titre field.';
+                    ToolTip = 'Specifies the value of the Titre field.', Comment = '%';
                 }
                 field("Départ"; Rec."Départ")
                 {
-                    ToolTip = 'Specifies the value of the Départ field.';
+                    ToolTip = 'Specifies the value of the Départ field.', Comment = '%';
                 }
-                field("Arrivé"; Rec."Arrivé")
+                field("Arrivée"; Rec."Arrivé")
                 {
-                    ToolTip = 'Specifies the value of the Arrivé field.';
+                    ToolTip = 'Specifies the value of the Arrivée field.', Comment = '%';
                 }
                 field("Type de véhicule"; Rec."Type")
                 {
-                    ToolTip = 'Specifies the value of the type field.';
-                    Caption = 'Type de véhicule';
-
                     trigger OnLookup(var Text: Text): Boolean
-                    var
-                        vehicule: Record Vehicule;
+
                     begin
                         vehicule.Reset();
                         if Page.RunModal(Page::"ListVehicule", vehicule) = Action::LookupOK then
-                            Rec."Type" := vehicule."Nom";
+                            rec."Type" := vehicule.Nom;
                     end;
+                    // ToolTip = 'Specifies the value of the Type de Vehicule field.', Comment = '%';
                 }
-                field("Distance parcourue (KM)"; Rec."Distance parcourue (KM)")
+                field("Distance Parcourue(KM)"; Rec."Distance Parcourue (KM)")
                 {
-                    ToolTip = 'Specifies the value of the Distance parcourue (KM) field.';
+                    ToolTip = 'Specifies the value of the Distance Parcourue(KM) field.', Comment = '%';
                 }
                 field("Nombre de trajets"; Rec."Nombre de trajets")
                 {
-                    ToolTip = 'Specifies the value of the Nombre de trajets field.';
                     trigger OnValidate()
+
                     begin
-                        Rec."Distance totale parcourue (KM)" := Rec."Distance parcourue (KM)" * Rec."Nombre de trajets";
-                        Rec."TTC1" := Rec."Distance totale parcourue (KM)" * vehicule.Coef;
+                        BEGIN
+                            Rec."Distance Totale parcourue (KM)" := Rec."Distance Parcourue (KM)" * Rec."Nombre de trajets";
+
+                            Rec."TTCdevise" := Rec."Distance Totale parcourue (KM)" * vehicule.Coef;
+                        END;
                     end;
+                    //ToolTip = 'Specifies the value of the Nombre de trajets field.', Comment = '%';
                 }
-                field("Distance totale parcourue (KM)"; Rec."Distance totale parcourue (KM)")
+                field("Distance Totale parcourue(KM)"; Rec."Distance Totale parcourue (KM)")
                 {
                     Editable = false;
-                    ToolTip = 'Specifies the value of the Distance totale parcourue (KM) field.';
+                    ToolTip = 'Specifies the value of the Distance Totale parcourue(KM) field.', Comment = '%';
                 }
-                field("TTC (Devise)"; Rec."TTC1")
+                field("TTC"; Rec."TTCdevise")
                 {
                     Editable = false;
-                    ToolTip = 'Specifies the value of the TTC (Devise) field.';
-                    Caption = 'TTC (EUR)';
+                    ToolTip = 'Specifies the value of the TTC(EUR) field.', Comment = '%';
                 }
-                field("Date de Début"; Rec."Date de Début")
+                field("Date De Début"; Rec."Date De Début")
                 {
-                    ToolTip = 'Specifies the value of the Date de Début field.';
+                    ToolTip = 'Specifies the value of the Date De Début field.', Comment = '%';
                 }
-                field(DatedeReprise; Rec."Date de Fin")
+                field("Date De Fin"; Rec."Date De Fin")
                 {
-                    ToolTip = 'Specifies the value of the Date de Fin field.';
-                    Caption = 'Date de Fin';
+                    ToolTip = 'Specifies the value of the Date De Fin field.', Comment = '%';
                 }
                 field(Commentaire; Rec.Commentaire)
                 {
-                    ToolTip = 'Specifies the value of the Commentaire field.';
                     MultiLine = true;
+                    ToolTip = 'Specifies the value of the Commentaire field.', Comment = '%';
                 }
+
             }
         }
     }
-
     var
-        vehicule: Record Vehicule;
+        vehicule: Record vehicule;
 }

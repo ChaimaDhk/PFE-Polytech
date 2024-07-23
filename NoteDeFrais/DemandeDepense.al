@@ -8,6 +8,7 @@ page 50112 DemandeDepense
     PageType = Card;
     SourceTable = Depense;
 
+
     layout
     {
         area(content)
@@ -16,25 +17,37 @@ page 50112 DemandeDepense
             {
                 Caption = 'General';
 
-                field(Titre; Rec.Titre)
+                field("Titre"; Rec.Titre)
                 {
                     ToolTip = 'Specifies the value of the Titre field.';
+                    Caption = 'Titre *';
+                    trigger OnValidate()
+                    begin
+                        if Rec.Titre = '' then
+                            Message('Le champ "Titre" est obligatoire.');
+                    end;
                 }
                 field(TypeDepense; Rec.TypeDepenses)
                 {
                     ToolTip = 'Specifies the value of the TypeDepense field.';
-                    Caption = 'Type de dépense';
+                    Caption = 'Type de dépense *';
                     trigger OnLookup(var Text: Text): Boolean
-
                     begin
                         type.Reset();
                         if Page.RunModal(Page::"ListTypeDépense", type) = Action::LookupOK then
-                            rec."TypeDepenses" := type.Nom;
+                            Rec."TypeDepenses" := type.Nom;
+                    end;
+
+                    trigger OnValidate()
+                    begin
+                        if Rec."TypeDepenses" = '' then
+                            Message('Le champ "Type de dépense" est obligatoire.');
                     end;
                 }
-                field(Pays; Rec.Pays)
+                field("Pays"; Rec.Pays)
                 {
                     ToolTip = 'Specifies the value of the Pays field.';
+                    Caption = 'Pays *';
                     trigger OnLookup(var Text: Text): Boolean
                     var
                         countrie: Record "Country/Region";
@@ -43,31 +56,45 @@ page 50112 DemandeDepense
                         if Page.RunModal(Page::"Countries/Regions", countrie) = Action::LookupOK then
                             Rec.Pays := countrie."Name";
                     end;
+
+                    trigger OnValidate()
+                    begin
+                        if Rec.Pays = '' then
+                            Message('Le champ "Pays" est obligatoire.');
+                    end;
                 }
-                field(TTCDevise; Rec."TTC (devise)")
+                field(TTCDevise; Rec."Montant")
                 {
                     ToolTip = 'Specifies the value of the TTC (devise) field.';
-                    Caption = 'Montant';
+                    Caption = 'Montant *';
 
                 }
-                field(TVA; Rec.TVA)
+                field("TVA"; Rec.TVA1)
                 {
                     ToolTip = 'Specifies the value of the TVA field.';
-                }
+                    Caption = 'TVA *';
 
+                }
                 field(DateDepense; Rec.DateDepense)
                 {
                     ToolTip = 'Specifies the value of the DateDepense field.';
-                    Caption = 'Date de Dépense';
+                    Caption = 'Date de Dépense *';
+                    trigger OnValidate()
+                    begin
+                        if Rec.DateDepense = 0D then
+                            message('Le champ "Date de Dépense" est obligatoire.');
+                    end;
                 }
                 field(MoyensDePaiement; Rec."Moyens de paiement")
                 {
                     ToolTip = 'Specifies the value of the Moyens de paiement field.';
                     Caption = 'Moyens de paiement';
+
                 }
-                field(Devise; Rec.Devise)
+                field("Devise"; Rec.Devise)
                 {
                     ToolTip = 'Specifies the value of the Devise field.';
+                    Caption = 'Devise *';
                     trigger OnLookup(var Text: Text): Boolean
                     var
                         currencies: Record "Currency";
@@ -76,14 +103,22 @@ page 50112 DemandeDepense
                         if Page.RunModal(Page::"Currencies", currencies) = Action::LookupOK then
                             Rec.Devise := currencies."code";
                     end;
+
+                    trigger OnValidate()
+                    begin
+                        if Rec.Devise = '' then
+                            message('Le champ "Devise" est obligatoire.');
+                    end;
                 }
-                field(Description; Rec.Description)
+                field("Description"; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.';
+
                 }
                 field(Commentaire; Rec.Commentaire)
                 {
                     ToolTip = 'Specifies the value of the Commentaire field.';
+
                 }
             }
             part("Attached Documents"; "Document Attachment Factbox")
@@ -102,8 +137,8 @@ page 50112 DemandeDepense
                 ApplicationArea = Notes;
             }
         }
-
     }
+
     var
         type: Record "TypeDépense";
 }

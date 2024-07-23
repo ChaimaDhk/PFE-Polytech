@@ -38,7 +38,7 @@ codeunit 50105 WorkflowRespHandlingExt2
             DataBase::Mission:
                 begin
                     RecRef.SetTable(Request);
-                    Request.Statut := Request.Statut::"Transmise";
+                    Request.Statut := Request.Statut::"Validée";
                     Request.Modify;
                     Handled := true;
                 end;

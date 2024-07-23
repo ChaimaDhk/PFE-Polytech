@@ -17,7 +17,7 @@ table 50146 Mission
         field(2; "Type"; Option)
         {
             Caption = 'Type';
-            OptionMembers = "Mission à l'étranger","Mission local";
+            OptionMembers = "","Mission à l'étranger","Mission local";
 
         }
         field(3; DateDebut; Date)

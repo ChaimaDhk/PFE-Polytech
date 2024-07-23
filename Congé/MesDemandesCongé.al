@@ -9,6 +9,8 @@ page 50141 "MesDemandesCongé"
     SourceTable = Conges;
     UsageCategory = Administration;
     CardPageId = "DemandeDeCongé";
+    DeleteAllowed = false;
+
 
     layout
     {
@@ -20,6 +22,7 @@ page 50141 "MesDemandesCongé"
                 {
                     Caption = 'Id Congé';
                     ToolTip = 'Specifies the value of the IdCongé field.';
+                    Editable = not IsReadOnly;
                 }
                 field("Date de Début"; Rec."DatedeDebut")
                 {
@@ -59,7 +62,7 @@ page 50141 "MesDemandesCongé"
                 }
                 field("Approval Status"; Rec."Approval Status")
                 {
-                    Caption = 'Approval Status';
+                    Caption = 'Statut';
                     ToolTip = 'Specifies the value of the Statut field.';
                     Editable = false;
                 }
@@ -71,6 +74,7 @@ page 50141 "MesDemandesCongé"
     {
         area(Navigation)
         {
+
             group("SendApproval")
             {
                 Caption = 'Envoyer demande approbation';
@@ -91,20 +95,26 @@ page 50141 "MesDemandesCongé"
                             ApprovalsMgmtCut.OnSendRequestForApproval(Rec);
                     end;
                 }
+
+
                 action("Cancel Approval Request")
                 {
-                    Caption = 'Cancel demande approbation';
-                    Visible = CanCancelApprovalForRecord OR CanCancelApprovalForFlow;
+                    // Visible = CanCancelApprovalForRecord OR CanCancelApprovalForFlow;
                     Image = CancelApprovalRequest;
                     ApplicationArea = All;
                     Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedOnly = true;
+                    Caption = 'Annuler demande approbation';
                     trigger OnAction()
+                    var
+                        WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
                     begin
-                        ApprovalsMgmtCut.OnCancelRequestForApproval(Rec);
+                        WorkflowWebhookManagement.FindAndCancel(Rec.RecordId);
+                        ApprovalsMgmtCut.OnCancelRequestForApproval(Rec); // Appel à la méthode du codeunit 50112
+
                     end;
+
                 }
+
                 action(Approve)
                 {
                     Visible = OpenApprovalEntriesExistForCurrUser;
@@ -119,7 +129,25 @@ page 50141 "MesDemandesCongé"
                     end;
                 }
             }
+            action("Supprimer")
+            {
+                ApplicationArea = All;
+                Image = Delete;
+                Promoted = true;
+                Caption = 'Supprimer';
+                trigger OnAction()
+                begin
+                    // Vérifier le statut avant de supprimer
+                    if ((Rec."Approval Status" <> Rec."Approval Status"::"Transmise") and (Rec."Approval Status" <> Rec."Approval Status"::"Validée")) then begin
+                        Rec.DELETE;
+                    end
+                    else begin
+                        Message('Vous ne pouvez pas supprimer un congé qui est déjà validé ou transmis.');
+                    end;
+                end;
+            }
         }
+
     }
 
     trigger OnAfterGetCurrRecord()

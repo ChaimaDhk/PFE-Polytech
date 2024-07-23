@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit Approval Mgmt. Ext (ID 50112).
+/// Codeunit Approval Mgmt. Ext (ID 50132).
 /// </summary>
 codeunit 50132 "Approval Congé Mgmt. Ext4"
 {

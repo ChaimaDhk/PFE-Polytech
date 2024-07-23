@@ -10,7 +10,7 @@ table 50116 FraisKilometrique
     {
         field(1; IdFrais; Integer)
         {
-            Caption = 'Id Depense';
+            Caption = 'Id frais';
             AutoIncrement = true;
         }
         field(2; "Titre"; Text[100])
@@ -75,6 +75,11 @@ table 50116 FraisKilometrique
         field(14; "TTC1"; Decimal)
         {
             Caption = 'TTC1';
+
+        }
+        field(15; "TTCdevise"; Decimal)
+        {
+            Caption = 'TTC';
 
         }
     }

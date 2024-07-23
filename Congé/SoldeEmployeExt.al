@@ -24,7 +24,7 @@ pageextension 50102 SoldeEmployeExt extends "Employee List"
             action("CalculateVacationBalance")
             {
                 ApplicationArea = All;
-                Caption = 'Calculate Vacation Balance';
+                Caption = 'Calculer soldes de congé';
                 Tooltip = 'Calculate the vacation balance based on the current employee data.';
                 trigger OnAction()
 

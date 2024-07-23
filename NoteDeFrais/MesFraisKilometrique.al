@@ -10,7 +10,6 @@ page 50134 MesFraisKilometrique
     UsageCategory = Administration;
     CardPageId = DemandeFraisKilometrique;
 
-
     layout
     {
         area(content)
@@ -31,7 +30,7 @@ page 50134 MesFraisKilometrique
                     ToolTip = 'Specifies the value of the Date de Fin field.';
                     Editable = false;
                 }
-                field(TTC; Rec.TTC)
+                field(TTCdevise; Rec.TTCdevise)
                 {
                     ToolTip = 'Specifies the value of the TTC (Devise) field.';
                 }

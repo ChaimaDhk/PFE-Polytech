@@ -46,16 +46,16 @@ codeunit 50112 "Approval Congé Mgmt. Ext1"
     /// </summary>
     /// <param name="Request">VAR Record "Congé".</param>
     /// <returns>Return value of type Boolean.</returns>
-    // procedure ValidateEnabled(var Request: Record "Conges"): Boolean
-    // var
-    //     flagValidate: Boolean;
-    // begin
-    //     IF NOT IsRequestApprovalsWorkflowEnable(Request) then
-    //         flagValidate := false;
-    //     If (Request.Statut = Request.Statut::Transmise) then
-    //         flagValidate := true;
-    //     exit(flagValidate);
-    // end;
+    procedure ValidateEnabled(var Request: Record "Conges"): Boolean
+    var
+        flagValidate: Boolean;
+    begin
+        IF NOT IsRequestApprovalsWorkflowEnable(Request) then
+            flagValidate := false;
+        If (Request."Approval Status" = Request."Approval Status"::Transmise) then
+            flagValidate := true;
+        exit(flagValidate);
+    end;
 
 
     /// <summary>
@@ -94,7 +94,6 @@ codeunit 50112 "Approval Congé Mgmt. Ext1"
     var
         WorkflowManagement: Codeunit 1501;
         WorkflowEventHandlingCust: Codeunit 50110;
-
         NoWorkflowEnabledErr: Label 'No approval workflow for this record type is enabled.';
 
 }

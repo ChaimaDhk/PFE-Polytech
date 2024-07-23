@@ -22,12 +22,12 @@ pageextension 50136 BusinessManagerRCExt extends "Order Processor Role Center"
                     Caption = 'Mes titres de congé';
                     RunObject = Page "TitreCongé";
                 }
-                action("Demande De Congé à valider")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Demandes de Congé valider';
-                    RunObject = Page "DemandeaValider";
-                }
+                // action("Demande De Congé à valider")
+                // {
+                //     ApplicationArea = All;
+                //     Caption = 'Demandes de Congé validée';
+                //     RunObject = Page "DemandeaValider";
+                // }
 
             }
         }
@@ -43,12 +43,12 @@ pageextension 50136 BusinessManagerRCExt extends "Order Processor Role Center"
                         Caption = 'Mes Ordres de Missions';
                         RunObject = Page "MesOrdres";
                     }
-                    action("Mes ordres de missions valider")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Mes ordres de missions valider';
-                        RunObject = Page "OrdreaValider";
-                    }
+                    // action("Mes ordres de missions valider")
+                    // {
+                    //     ApplicationArea = All;
+                    //     Caption = 'Mes ordres de missions validée';
+                    //     RunObject = Page "OrdreaValider";
+                    // }
                 }
                 group("Notes de frais")
                 {
@@ -70,23 +70,31 @@ pageextension 50136 BusinessManagerRCExt extends "Order Processor Role Center"
                         Caption = 'Mes Frais Kilométriques';
                         RunObject = Page MesFraisKilometrique;
                     }
-                    action("Notes de frais à valider")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Mes notes de frais à valider';
-                        RunObject = Page NotesDeFraisavalider;
-                    }
+                    // action("Notes de frais à valider")
+                    // {
+                    //     ApplicationArea = All;
+                    //     Caption = 'Mes notes de frais validée';
+                    //     RunObject = Page NotesDeFraisavalider;
+                    // }
                 }
             }
         }
         addafter(Items)
         {
-            action("Calcule Solde De Congé")
+            action("Report note de frais")
             {
                 ApplicationArea = All;
-                Caption = 'Calcule Solde De Congé';
-                Tooltip = 'Calcule le solde de congé basé sur les données actuelles de l’employé.';
+                Caption = 'Report note de frais';
+                Image = Print;
+                RunObject = Report 50160; // Spécifiez ici le numéro de votre rapport d'impression
 
+            }
+            action("Report congé")
+            {
+                ApplicationArea = All;
+                Caption = 'Report congé';
+                Image = Print;
+                RunObject = Report 50161; // Spécifiez ici le numéro de votre rapport d'impression
 
             }
         }

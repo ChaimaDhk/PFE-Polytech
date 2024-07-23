@@ -38,7 +38,7 @@ codeunit 50111 WorkflowRespHandlingExt1
             DataBase::Conges:
                 begin
                     RecRef.SetTable(Request);
-                    Request."Approval Status" := Request."Approval Status"::Transmise;
+                    Request."Approval Status" := Request."Approval Status"::"Validée";
                     Request.Modify;
                     Handled := true;
                 end;
