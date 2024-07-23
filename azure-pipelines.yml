@@ -1,0 +1,28 @@
+trigger:
+  branches:
+    include:
+      - main  # Déclenche le pipeline sur des modifications dans la branche main
+
+pool:
+  vmImage: 'windows-latest'  # Image de la machine virtuelle à utiliser pour le build
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: 'latest'
+
+- script: |
+    echo Installing AL Language Extension...
+    code --install-extension ms-dynamics-smb.al
+  displayName: 'Install AL Language Extension'
+
+- script: |
+    echo Compiling AL code...
+    msbuild /t:build /p:configuration=Release
+  displayName: 'Compile AL code'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)/<chemin_vers_vos_fichiers_app>'
+    artifactName: 'ALAppArtifacts'
